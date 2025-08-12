@@ -1,0 +1,46 @@
+<!doctype html>
+{% load static %}
+
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'teams/css/style.css' %}">
+    <title>{% block title %} football {% endblock title %}</title>
+  </head>
+  <body>
+    {% include 'teams/navbar.html' %}
+      <br>
+    {% block content %}
+    <h1>Football Teams</h1>
+    {% endblock content %}
+    <!--    ACCOUNT_FORMS = {
+      'login': 'allauth.account.forms.LoginForm',
+      'signup': 'allauth.account.forms.SignupForm',
+      'add_email': 'allauth.account.forms.AddEmailForm',
+      'change_password': 'allauth.account.forms.ChangePasswordForm',
+      'set_password': 'allauth.account.forms.SetPasswordForm',
+      'reset_password': 'allauth.account.forms.ResetPasswordForm',
+      'reset_password_from_key': 'allauth.account.forms.ResetPasswordKeyForm',
+      'disconnect': 'allauth.socialaccount.forms.DisconnectForm',
+    }
+    -->
+
+    
+
+    <script src="{% static 'teams/js/script.js' %}"></script>
+    <script src="{% static 'teams/js/count.js' %}"></script>
+    
+    <script src="{% static '/admin/js/core.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'teams/css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'admin/css/widgets.css' %}">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    
+    
+  </body>
+</html>

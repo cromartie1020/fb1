@@ -1,0 +1,42 @@
+{% extends 'teams/base.html'%}
+{% block title %}
+  Winner List
+{% endblock title %}
+
+{% block content %}
+<div class = "center">
+ <table>
+    <tr>
+        <th>Game ID</th>
+        <th>Week Number</th>
+        <th>Year</th>
+        <th>Player</th>
+        <th>Away Team</th>
+        <th>Home Team</th>
+        <th>Away Score</th>
+        <th>Home Score</th>
+        <th>Selected Team</th>
+        <th>Actual Winner</th>
+        <th>Status</th>
+        <th>Options</th>
+    </tr>    
+  {% for winner in page_obj %}
+    <tr>
+       <td class = 'center'> {{ winner.id }}</td>  
+       <td class = 'center'> {{ winner.week_number }}</td>
+       <td class = 'center'>{{ winner.year }}</td>
+       <td class = 'center'>{{ winner.player}}</td>
+       <td class = 'center'>{{ winner.away }}</td>
+       <td class = 'center'>{{ winner.home }}</td>
+       <td class = 'center'>{{winner.away_score }}</td>
+       <td class = 'center'> {{winner.home_score }}</td>
+       <td class = 'center'>{{winner.selected_pick }}</td>
+       <td class = 'center'>{{ winner.actual_winner }}</td>
+       <td class='center'>{{ winner.status }}</td>
+       <td class = 'center'><a href="{% url 'update' winner.id %}">Update</a> | <a href="{% url 'scores' winner.id %}">Scores</a> | <a href="{% url 'scoresNew' %}">Add</a> | <a href="{% url 'delete' winner.id %}">DELETE</a></td>
+    </tr>    
+    {% endfor %}
+ </table>  
+</div>   
+{% include 'teams/paginator.html' %}
+{% endblock content %}

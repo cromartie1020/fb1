@@ -1,0 +1,68 @@
+{% extends 'teams/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}
+ Select Home and Away
+{% endblock title %}
+
+{% block content %}
+
+
+<h1 class='center' >
+  Date &amp; Time
+</h1>
+<p class='center'>
+  It is currently <span id="output">now</span>.
+
+
+</p>
+
+<h2 class='center'>
+
+  Select Home and Away Teams 
+</h2>
+<br>
+
+<!-- Listing the Home and Away Teams --------------->
+
+<div class="container">
+  <ol>
+    <div class="row">
+        
+        {% for team in teams %}
+          <div class="col-6">
+            
+      
+             <li>{{ team|title }}</li> 
+          
+            
+          </div>
+        {% endfor %}
+    </div>
+  </ol>
+
+</div>
+
+<!--Selecting The Home and Away Team.-->
+
+  <div class='container'>
+       
+      
+      <br>
+     
+      <form method="POST" class="uniform">
+        {% csrf_token %}
+        
+        {{ form|crispy }} 
+        
+        <!--{{ form.datecreated }} {{ form.timecreated }} -->
+        <input type="Submit" value=Submit>
+      </form>
+     
+      
+
+    
+  </div>
+
+
+{% endblock content %}

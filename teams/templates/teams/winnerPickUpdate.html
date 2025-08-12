@@ -1,0 +1,26 @@
+{% extends 'teams/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}
+ Select Home and Away
+{% endblock title %}
+
+{% block content %}
+    <div class = "col-lg-6 offset-lg-3">
+
+      <form method="POST" class="uniform">
+        {% csrf_token %}
+        
+        {{ form|crispy }} 
+        
+        <!--{{ form.datecreated }} {{ form.timecreated }} -->
+        <input type="Submit" value=Update>
+      </form>
+     
+      
+    </div>
+    
+  
+
+
+{% endblock content %}

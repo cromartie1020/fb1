@@ -1,0 +1,62 @@
+{% extends 'teams/base.html' %}
+{% load static %}    
+{% load crispy_forms_tags %}
+{% block title %}
+  Selected Winners
+{% endblock %}
+
+{% block content %}
+<div>
+ <table>
+    <tr>
+        <th>
+            Player
+        </th>        
+        <th>
+            Week Number
+        </th>
+           
+        <th>
+            Away
+        </th>
+        <th>
+            Home
+        </th>
+        <th>
+            Away Score
+        </th>
+        <th>
+            Home Score
+        </th>
+        <th>
+            Selected Pick
+        </th>
+        <th>
+            Actual Winner
+        </th>
+        <th>
+            status
+        </th>
+    </tr>    
+    {% for winner in winners %}
+        <tr>       
+          <td>{{ winner.player}}</td>
+          <td>{{ winner.week_number}}</td>
+          <td>{{ winner.away}}</td>
+          <td>{{ winner.home }}</td>
+          <td>{{ winner.away_score }}</td>
+          <td>{{ winner.home_score }}</td>
+          <td>{{ winner.selected_pick }}</td>
+          <td>{{ winner.actual_winner }}</td>
+          <td>{{ winner.status }}</td>
+        </tr>
+    {% endfor %}
+    </div>  
+ </table>
+ <!--
+ {{ interater }}
+ {% for i in iterater %}
+   {{ i }}
+ {% endfor %}
+-->
+{% endblock %}

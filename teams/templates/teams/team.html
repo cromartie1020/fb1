@@ -1,0 +1,14 @@
+{% block title %}
+ Football form
+{% endblock title %}
+
+{% block content %}
+{{ form.date_field}}
+<form action="" method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  {{ form.date_field}}
+  <input type='submit' value='Submit'>
+</form>
+
+{% endblock content %}

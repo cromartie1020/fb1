@@ -1,0 +1,73 @@
+{% extends 'teams/base.html' %}
+{% load static %}
+{% block title %}
+  Select your teams
+{% endblock %}
+   Print Selections
+{% block content %}
+ <div>
+   <table border=1 style ="background-color: bisque;" color="yellow" class="center">
+    <tr class="left">
+      <th>
+        Away Team
+      </th>
+      <th>
+        Score
+      </th>
+      <th>
+        Home Team
+      </th>
+      <th>
+        Score
+      </th>
+      <th>
+        Picked
+      </th>
+      <th>
+        Actual
+      </th>
+      <th>
+        Status
+      </th>
+    </tr>
+    
+    {% for w in winners %}
+    
+    <tr class="left">
+        <td>
+          {{ w.away }}
+        </td>
+        <td>
+          {{ w.away_score}}
+        </td>
+        <td>
+          {{ w.home }}
+        </td>
+        <td>
+          {{ w.home_score}}
+        </td>
+        <td>
+          {{ w.selected_pick }}
+        </td>
+        <td>
+          {{ w.actual_winner }}
+        </td>
+        <td>
+          {{ w.status }}
+        </td>
+    </tr>
+    
+    {% endfor %}
+        
+    
+   </table>
+   <br/>
+   <br/>
+   <div class="center">
+   <b>Tie Breaker: </b>Total points scored on <i>Monday Night Football</i>&nbsp;<u>{{ total_points }}</u>. 
+  </div>
+  <div class="center">
+    <b>Name: &nbsp; {{ player }} </b>&nbsp; &nbsp; &nbsp;&nbsp;Total Correct</i>&nbsp;<u>{{ total }}</u>. 
+   </div>
+</div>  
+{% endblock %}

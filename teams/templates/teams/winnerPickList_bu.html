@@ -1,0 +1,56 @@
+{% extends 'teams/base.html'%}
+{% block title %}
+  Winner List
+{% endblock title %}
+
+{% block content %}
+ <table>
+    <tr>
+        <th>Week Number</th>
+        <th>Year</th>
+        <th>Player</th>
+        <th>Away Team</th>
+        <th>Home Team</th>
+        <th>Away Score</th>
+        <th>Home Score</th>
+        <th>Selected Team</th>
+        <th>Status</th>
+        <th>Update</th>
+    </tr>    
+  {% for winner in page_obj %}
+    <tr>   
+       <td class = 'center'> {{ winner.week_number }}</td>
+       <td class = 'center'>{{ winner.year }}</td>
+       <td class = 'center'>{{ winner.player}}</td>
+       <td class = 'center'>{{ winner.away }}</td>
+       <td class = 'center'>{{ winner.home }}</td>
+       <td class = 'center'>{{winner.away_score }}</td>
+       <td class = 'center'> {{winner.home_score }}</td>
+       <td class = 'center'>{{winner.selected_pick }}</td>
+       <td class = 'center'>{{ winner.status }}</td>
+       <td class = 'center'><a class="btn btn-success" href="{% url 'update' winner.id %}">Update</a> | <a class="btn btn-info" href="{% url 'scores' winner.id %}">Scores</a> | <a class="btn btn-danger" href="{% url 'delete' winner.id %}">DELETE</a></td>
+    </tr>    
+    {% endfor %}
+ </table>
+
+{% include 'teams/paginator.html'%}
+<!--  
+ <div class="pagination">
+  <span class="step-links">
+      {% if page_obj.has_previous %}
+          <a class="btn btn-info mb-4" href="?page=1">&laquo; first</a>
+          <a class="btn btn-info mb-4"href="?page={{ page_obj.previous_page_number }}">previous</a>
+      {% endif %}
+
+      <span class="current">
+          Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+      </span>
+
+      {% if page_obj.has_next %}
+          <a class="btn btn-info mb-4"href="?page={{ page_obj.next_page_number }}">next</a>
+          <a class="btn btn-info mb-4"href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+      {% endif %}
+  </span>
+</div>   
+-->
+{% endblock content %}

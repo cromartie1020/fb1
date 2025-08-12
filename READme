@@ -1,0 +1,8 @@
+python3 -m venv venv
+pip install psycopg2-binary
+pip install crispy-bootstrap4
+pip install djanogo
+pip install django-allauth
+
+
+

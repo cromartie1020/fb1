@@ -1,0 +1,28 @@
+{% extends 'teams/base.html' %}
+{% load static %}
+{% block title %}
+{% endblock title %}
+
+{% block content %}
+<h2 class='center'>
+  Football Teams
+</h2>
+<div class="container">
+  
+  
+  <ol>
+    <div class="row">
+      {% for team in teams %}
+        
+        <div class="col-6">
+          <li>{{ team }}</li>
+        </div>
+        
+      {% endfor %}
+
+    </div>
+  </ol>
+
+  
+</div>
+{% endblock content %}

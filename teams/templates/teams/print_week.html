@@ -1,0 +1,92 @@
+{% extends 'teams/base.html' %}
+{% load static %}
+{% block title %}
+  Week {{ week_number }}
+{% endblock %}
+
+{% block content %}
+  <div class="center">
+    <h1>WEEK {{ week_number }} PICK SHEET</h1>
+    <br />
+    <h2>Year {{ year }}</h2>
+  </div>
+   <br />
+   <div class="divide center">
+
+
+    <div class="right">
+      
+    </div>
+         
+    <div class="left ml-3">
+        <h3>Away Teams</h3>  
+    </div>
+    <div class="left">
+    </div>
+    <div class="left">
+        <h3>Home Teams</h3>
+    </div>
+
+    <div class="left">
+    </div>
+
+    <div class="left">
+    </div>
+
+
+    
+  </div>
+    <br />
+   {% for home in home_aways %}
+   {% ifchanged %}
+       <b><p class="center">{{ home.startdate|date:'l, M. j    '}}</p> </b>
+   {% endifchanged %}
+   
+   <div class="divide center">
+    
+    
+    <div class="right">
+      <img src="{% static 'teams/images/select.jpg' %}" alt="A mark to select home or away team">
+    </div>
+         
+    <div class="left">
+        
+        
+        {{ home.away_team|title }}  
+    </div>
+    <div class="left">
+        at
+    </div>
+    <div class="left">
+        {{ home.home_team|title }}
+    </div>
+
+    <div class="left">
+        <img src="{% static 'teams/images/select.jpg' %}" alt="A mark to select home or away team">
+    </div>
+
+    <div class="left">
+          {{ home.starttime|time:"g:i A" }}
+    </div>
+
+    <br>
+
+    
+  </div>
+  {% endfor %}
+  <div class="center">
+  {% if byes %}
+     Byes:
+    {% for bye in  byes  %}
+      {{ bye }} &nbsp;
+    {% endfor %}
+  {% endif %}
+  </div>
+  <div class="center">
+    <b>Tiebreaker:</b>Total Points Scored in Monday Night Football Games. __________
+    <br />
+    Name___________________________     Total Correct _______________________
+
+  </div>
+
+{% endblock %}

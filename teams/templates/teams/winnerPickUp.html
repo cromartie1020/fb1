@@ -1,0 +1,66 @@
+{% extends 'teams/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}
+ Select Home and Away
+{% endblock title %}
+
+{% block content %}
+    <div class = "col-lg-6 offset-lg-3">
+
+      <form method="POST" class="uniform">
+        {% csrf_token %}
+        
+        <pre>
+          Week Number:   <input type="text" id = 'week_number', value="{{ week_number }}" name =  "week_number"  />
+        </pre>
+        <pre>
+          Year:          <input type="number" id = 'year', value="{{ year }}" name =  "year"  />
+        </pre>
+      
+
+        <pre>
+          
+          Player:        <input type="text" id = 'player', value="{{ player }}" name = "player" />
+        </pre>
+      
+       
+        <pre>
+          Away Team:     <input type="text" id = 'away', value="{{ away }}" name = "away" />
+
+        </pre>
+        <pre>
+          Home Team:     <input type="text" id = 'home', value="{{ home }}" name = "home" />
+        </pre>
+        <pre>
+          Away Score:    <input type="number" id = 'away_score', value="{{ away_score }}" name = "away_score" />
+
+        </pre>
+        <pre>
+          Home Score:    <input type="number" id = 'home_score', value="{{ home_score }}" name = "home_score" />
+        </pre>
+        
+        
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Selected Pick:  &nbsp; &nbsp; &nbsp;
+        <select id="selected_pick" value="{{ selected_pick }}" name="selected_pick">
+        
+           
+                               <option value="{{ away }}">{{ away }}</option> 
+                               <option value="{{ home}}" >{{ home }}</option>     
+        
+       </select>
+
+    
+        
+        
+        <pre>
+          <br/>
+                       <input type="Submit" class="btn btn-info" value='Winner Update' />
+      
+         </pre>
+        </form>
+     
+      
+    </div>
+
+{% endblock  %}

@@ -1,0 +1,67 @@
+{% extends 'teams/base.html' %}
+{% load static %}
+{% block title %}
+  Select Week {{ week_number }} Winners
+{% endblock %}
+
+{% block content %}
+
+    <div class='container1'>
+      <div>  
+        <span class="ml-3">Away Teams</span>                          
+      </div>
+      <div>
+
+      </div>
+      <div>
+        <span class="ml-3">Home Teams</span>
+      </div>
+      <div>
+
+      </div>
+   </div>  
+
+    <form action="{% url 'winner_select'  %}" method = "GET">
+        <div class="center">
+          <input type="text" name="week_number" value="Week Number">
+        </div>
+        {% for team in home_aways %}
+          
+          <div class="container1 font-height">
+            <div>
+              
+              <input type="radio" name="{{ team.id }}"  id="{{ team.away_team }}"  value="{{ team.away_team }}"  />
+              <label for="{{ team.away_team}}">{{ team.away_team}}</label>
+              
+            </div>
+            <div>
+              <!--
+              <span><button href="#">Select</button></span>
+              -->
+            </div>
+            <div>
+              <input type="radio" name="{{ team.id }}"   id="{{ team.home_team }}"  value="{{ team.home_team }}"  />
+              <label for="{{ team.home_team}}">{{ team.home_team}}</label><span>
+            </div>
+            <div>
+              <!--
+              <span><button href="#">Select</button></span>
+              -->
+            </div>
+          </div>
+            
+          
+          
+        {% endfor %}
+    </div>
+    
+     <div class="center">
+     <input type="submit" value="Submit">
+    </div>
+  
+    </form>
+  
+
+
+
+{% endblock %}
