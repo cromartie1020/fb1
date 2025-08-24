@@ -11,9 +11,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY=config('SECRET_KEY')
 
 
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = ['cromartie245.pythonanywhere.com']
 
 
 # Application definition
@@ -25,18 +26,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+
     'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    
+
     'teams.apps.TeamsConfig',
     #Using bootstrap version 4----------------------------------------
     'crispy_forms',
     'crispy_bootstrap4',
     #-----------------------------------------------------------------
-    
+
 ]
 SITE_ID = 1
 MIDDLEWARE = [
@@ -126,7 +127,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-LOGIN_REDIRECT_URL='/' 
+LOGIN_REDIRECT_URL='/'
 LOGOUT_REDIRECT_URL='/'
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap4'  # Using bootstrap version 4

@@ -17,17 +17,14 @@ urlpatterns = [
     path('update/<int:id>/', views.update, name='update'),
     #path('pick_week/pick_year/',views.pick_week_year, name = 'pick_week_year'),
     path('select_winners/',views.select_winners,name='select_winners'),
-    path('save_winners/',views.save_winners,name='save_winners'),  
-    path('week/',views.winner_select_view, name='winner_select'),  
+    path('save_winners/',views.save_winners,name='save_winners'),
+    path('week/',views.winner_select_view, name='winner_select'),
     path('list/', views.winnerPickList, name='list'),
-    path('winnerPickNew/<int:id>/', views.winnerPickNew, name='winnerPickNew'), 
+    path('list_id/', views.winnerPickList_id, name='list_id'),
+    path('winnerPickNew/<int:id>/', views.winnerPickNew, name='winnerPickNew'),
     path('teamNew/', views.teamNew, name='teamNew'),
     path('delete/<int:id>/',views.delete, name='delete'),
     path('scores/<int:id>/',views.scores, name='scores'),
     path('scoresNew/',views.scoresNew, name='scoresNew'),   # Added 08/08/2025
-    
-
-
-   
-    
+    path('list_week/', views.winnerPickListWeek, name='list_week'),
 ]

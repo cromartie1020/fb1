@@ -4,10 +4,10 @@
 {% endblock title %}
 
 {% block content %}
-<form action="{% url 'list' %}">
+<form action="{% url 'list_week' %}">
   <div class="form-group">
-    <label for="search">Search by Player Name:</label>
-    <input type="text" class="form-control" id="search" name="search" placeholder="Enter player name">
+    <label for="search">Search by Week_number:</label>
+    <input type="text" class="form-control" id="search" name="search" placeholder="Enter Week Number">
   </div>
   <button type="submit" class="btn btn-primary">Search</button>
   <a href="{% url 'list' %}" class="btn btn-secondary">Reset</a>

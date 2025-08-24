@@ -1,6 +1,6 @@
 .center{
   text-align: center;
-  margin: auto
+
 }
 body {
   background: lightblue;
@@ -14,11 +14,11 @@ body {
   max-width: 960px;
   margin: auto;
   text-align: center;
-  
+
   display: grid;
-  grid-template-columns: 1fr 3fr 1fr 3fr 1fr 1fr ;  
+  grid-template-columns: 1fr 3fr 1fr 3fr 1fr 1fr ;
   gap: 10px;
-   
+
 }
 
 
@@ -66,7 +66,7 @@ li {
 
 .offsetleft{
   padding-left: 100px;
-   
+
 }
 .pickWeekBox {
   width: 560px;
@@ -90,7 +90,7 @@ table, th, td {
 th, td {
   padding: 10px;
   border: 1px solid black;
-  text-align: center; 
+  text-align: center;
 }
 
 tr:nth-child(even){
