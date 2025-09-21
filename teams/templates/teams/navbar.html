@@ -26,6 +26,10 @@
           <a class="nav-link" href="{% url 'total' %}">Total Wins
           </a>
         </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'weeklyTotals' %}">Weekly Wins
+          </a>
+        </li>
 
         <li class="nav-item">
           {% if user.is_authenticated %}

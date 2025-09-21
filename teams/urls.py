@@ -27,4 +27,6 @@ urlpatterns = [
     path('scores/<int:id>/',views.scores, name='scores'),
     path('scoresNew/',views.scoresNew, name='scoresNew'),   # Added 08/08/2025
     path('list_week/', views.winnerPickListWeek, name='list_week'),
+    path('totalWins/', views.totalWins, name = 'totalWins'),
+    path('weeklyTotals/', views.weeklyTotals, name='weeklyTotals'),
 ]

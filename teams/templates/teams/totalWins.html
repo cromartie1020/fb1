@@ -1,0 +1,31 @@
+{% extends 'teams/base.html' %}
+{% load static %}
+
+{% block title %}
+   Total Wins
+{% endblock %}
+
+{% block content %}
+
+  <div>
+    <table style="margin-right: auto; margin-left: auto; ">
+      <thead>
+        <tr>
+          <th>Number of Wins</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        {% for result in results %}
+          <tr>
+            <td>{{ result }}</td>
+
+          </tr>
+
+
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+{% endblock %}

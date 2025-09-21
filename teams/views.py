@@ -355,7 +355,7 @@ def scores(request,id):
         if home_score == away_score:
             actual_winner = 'Tie'
             status        = 'Tie'
-        ual_winner = 'Tie'
+        #ual_winner = 'Tie'
 
         form = WinnerPick( week_number=week_number, year=year, player=player, away= away, home=home, away_score=away_score, home_score=home_score, selected_pick=selected_pick,actual_winner=actual_winner, status=status)
 
@@ -393,13 +393,11 @@ def total(request):
                 results.append(week_number)
                 results.append(player)
                 results.append(total)
-                print(results)
-                #results.append(f'{player} has won {total}  game in week number {week_number}.')
+
             elif total > 1:
                 results.append(week_number)
                 results.append(player)
                 results.append(total)
-                #results.append(f'{player} has won {total}  games in week number {week_number}.')
 
     context={
         'results':results,
@@ -525,9 +523,15 @@ def winnerPickListWeek(request):
 def winnerPickList(request):
     '''
     '''
+    year = request.GET.get('year')
+    player = request.GET.get('player')
+    week_number = request.GET.get('home')
     search = request.GET.get('search')
+
     if search:
         list=WinnerPick.objects.filter(player__icontains=search).order_by('-id',)
+        #list=WinnerPick.objects.filter(player__icontains=search).order_by('year','week_number','player','home')
+        print('list: ',list)
         p= Paginator(list,16)
         page_number = request.GET.get('page')
         page= request.GET.get('page')
@@ -543,6 +547,7 @@ def winnerPickList(request):
 
     else:
         list=WinnerPick.objects.all().order_by('-id',)
+        #list=WinnerPick.objects.filter(player__icontains=search).order_by('year','week_number','player','home')
         p= Paginator(list,16)
         page_number = request.GET.get('page')
         page= request.GET.get('page')
@@ -561,4 +566,65 @@ def winnerPickList(request):
         'page_obj':page_obj,
     }
     return render(request, 'teams/winnerPickList.html', context)
+def totalWins(request):
+    '''
+    The Total number of wins per player.
+    '''
+    results =[]
+    result = 0
+    temp =0
+    players=len(Players)  # Total number of players in the pool.
+   # This hold the player and the total wins
+    for player in Players:
+        total=0
+        temp=0
+        for week_number  in range (1, 19):
+
+            total=0
+            total=WinnerPick.objects.filter(player = player).filter(status='Win').filter(week_number=week_number).count()
+            if total >= 1:
+                temp+= total
+
+                results.append( f"{player} has won {temp} game(s) in the season.")
+
+
+    results=results[-1:-players-1:-1]
+    print('results', results)
+    context={
+        'results':results,
+    }
+    return render(request, 'teams/totalWins.html', context)
+
+def weeklyTotals(request):
+    '''
+    '''
+    #results =[]
+    player = request.GET.get('player')
+    week   = request.GET.get('week')
+    year   = request.GET.get('year')
+    total=WinnerPick.objects.filter(year=year).filter(player = player).filter(status='Win').filter(week_number=week).count()
+    total_wins = WinnerPick.objects.filter(year=year).filter(player=player).filter(status='Win').count()
+
+    if total >= 1:
+        total = total
+    else:
+        total = ''
+    print ('total: ',total)
+    if total_wins >= 1:
+        total_wins = total_wins
+    else:
+        total_wins = ''
+
+
+
+    context={
+
+        'total':total,
+        'player':player,
+        'week':week,
+        'year':year,
+        'total_wins':total_wins,
+    }
+    return render(request, 'teams/weeklyTotals.html', context)
+
 
