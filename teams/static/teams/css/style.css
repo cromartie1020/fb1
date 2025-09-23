@@ -97,5 +97,8 @@ tr:nth-child(even){
   background-color: #D6EEEE;
 }
 
+lh {
+  line-height:1.0;
+}
 
 

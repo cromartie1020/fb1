@@ -531,7 +531,7 @@ def winnerPickList(request):
     if search:
         list=WinnerPick.objects.filter(player__icontains=search).order_by('-id',)
         #list=WinnerPick.objects.filter(player__icontains=search).order_by('year','week_number','player','home')
-        print('list: ',list)
+        print('list: ',list, len(list))
         p= Paginator(list,16)
         page_number = request.GET.get('page')
         page= request.GET.get('page')
